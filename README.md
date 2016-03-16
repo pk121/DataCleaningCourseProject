@@ -7,21 +7,26 @@ temp<-tempfile()
 fileUrl<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(fileUrl,temp,mode="wb")
 ```
+Then we extract the zip file into current working directory and afterwards delete it
+```
+unzip(temp,exdir=".")
+unlink(temp)
+```
 Then we read "features.txt"
 ```
-features<-read.table(unzip(temp,"UCI HAR Dataset/features.txt"),sep=" ")
+features<-read.table("UCI HAR Dataset/features.txt",sep=" ")
 ```
 Then we read *X_test.txt* (providing column names from the vector *features*), *y_test.txt* and *subject_test.txt*
 ```
-testValues<-read_table(unzip(temp,"UCI HAR Dataset/test/X_test.txt"),col_names=as.character(features$V2))
-testLabels<-read_table(unzip(temp,"UCI HAR Dataset/test/y_test.txt"),col_names="Activity")
-testSubjects<-read_table(unzip(temp,"UCI HAR Dataset/test/subject_test.txt"),col_names="Subject")
+testValues<-read_table("UCI HAR Dataset/test/X_test.txt",col_names=as.character(features$V2))
+testLabels<-read_table("UCI HAR Dataset/test/y_test.txt",col_names="Activity")
+testSubjects<-read_table("UCI HAR Dataset/test/subject_test.txt",col_names="Subject")
 ```
 Similarly we read *X_train.txt*, *y_train.txt* and *subject_train.txt*
 ```
-trainValues<-read_table(unzip(temp,"UCI HAR Dataset/train/X_train.txt"),col_names=as.character(features$V2))
-trainLabels<-read_table(unzip(temp,"UCI HAR Dataset/train/y_train.txt"),col_names="Activity")
-trainSubjects<-read_table(unzip(temp,"UCI HAR Dataset/train/subject_train.txt"),col_names="Subject")
+trainValues<-read_table("UCI HAR Dataset/train/X_train.txt",col_names=as.character(features$V2))
+trainLabels<-read_table("UCI HAR Dataset/train/y_train.txt",col_names="Activity")
+trainSubjects<-read_table("UCI HAR Dataset/train/subject_train.txt",col_names="Subject")
 ```
 Then we combine *testLabels*, *testSubjects* & *testValues* by columns respectively.
 ```
@@ -45,7 +50,7 @@ data<-data[,c(1,2,index)]
 ### 3.) Uses descriptive activity names to name the activities in the data set
 We read *activity_labels.txt* and then merge *data* and *activities*
 ```
-activities<-read_table(unzip(temp,"UCI HAR Dataset/activity_labels.txt"),col_names=FALSE)
+activities<-read_table("UCI HAR Dataset/activity_labels.txt",col_names=FALSE)
 data<-merge(data,activities,by.x="Activity",by.y="X1",all.x=TRUE)
 ```
 Then we replace the first column of *data* with the newly created 69th column
