@@ -1,6 +1,6 @@
 # Code Book
 ## There are 68 variables in the final data set *tidyData*
-### 1.) The first variable *Activity* is of *factor* type and takes following values:
+### 1.) The first variable *Activity* is of *factor* type and has following levels:
 *WALKING*, *WALKING_UPSTAIRS*, *WALKING_DOWNSTAIRS*, *SITTING*, *STANDING*, *LAYING*
 ### 2.) The second variable *Subject* is of *integer* type and takes values from *1* to *30*
 ### 3.) The remaining 66 variables are feature variables of *numeric* type which calculate mean and standard deviation measurements. The names of the 66 variables are as follows:
