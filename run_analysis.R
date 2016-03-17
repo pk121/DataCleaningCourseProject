@@ -1,3 +1,5 @@
+#To test the script, set the working directory to any custome folder manually.
+
 #loading packages
 library(dplyr)
 library(readr)
