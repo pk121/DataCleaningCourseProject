@@ -42,7 +42,7 @@ data<-rbind(testData,trainData)
 ```
 **The resulting variable *data* contains the single data set which merges the test and train data sets.**
 ### 2.) Extracts only the measurements on the mean and standard deviation for each measurement:
-Using Regular Expressions we extract all column names from variable *data* which contain the strings *"Mean("*, *"mean("*, *"Std("* or *"std("*
+Using Regular Expressions we extract all column names from variable *data* which contain the strings *"Mean("*, *"mean("*, *"Std("* or *"std("*. We do not extract columns with names having *"meanFreq()"* in them.
 ```
 index<-grep("[M,m]ean\\(|[S,s]td\\(",names(data))
 data<-data[,c(1,2,index)]
